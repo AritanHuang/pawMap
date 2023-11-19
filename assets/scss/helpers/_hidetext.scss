@@ -1,0 +1,11 @@
+@mixin hide-text {
+    background-image: url(/assets/images/logo_horizontal.png);
+    width: 160px;
+    height: 44px;
+    display: block;
+    text-indent: 101%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-size: cover;
+    background-position: center center;
+}

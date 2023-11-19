@@ -1,0 +1,98 @@
+<header class="bg-light">
+    <!-- 桌機版表頭 -->
+    <div class="d-none p-20 d-xl-flex justify-content-between align-items-center">
+        <nav class="d-flex align-items-center">
+            <a href="index.html">
+                <h1 class="header-logo">pawMap</h1>
+            </a>
+            <ul class="d-flex list-unstyled mb-0 ms-40">
+                <li class="pe-32 border-end border-accent-pink"><a class="fs-5 fw-medium" href="">尋醫去</a></li>
+                <li class="px-32 border-end border-accent-pink"><a class="fs-5 fw-medium" href="">近期活動</a></li>
+                <li class="px-32 border-end border-accent-pink"><a class="fs-5 fw-medium" href="">毛孩知識庫</a></li>
+                <li class="ps-32"><a class="fs-5 fw-medium" href="">毛孩社群</a></li>
+            </ul>
+        </nav>
+        <nav>
+            <ul class="d-flex  align-items-center list-unstyled mb-0">
+                <li class="me-20">
+                    <a class="btn btn-primary rounded-pill link-light py-12 px-20" href="">註冊</a>
+                </li>
+                <li class="pe-20 me-20 border-end border-accent-pink">
+                    <a class="btn btn-light rounded-pill link-dark border-dark py-12 px-20" href="">登入</a>
+                </li>
+                <li class="">
+                    <a class="btn btn-dark rounded-pill link-light py-12 px-20 d-flex align-items-center justify-content-center"
+                        href=""><span class="material-symbols-outlined me-1">
+                            pet_supplies
+                        </span>毛孩護照</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <!-- 手機平版表頭 -->
+    <div class="p-12 d-flex d-xl-none justify-content-between align-items-center">
+        <a href="index.html">
+            <h1 class="header-logo">pawMap</h1>
+        </a>
+        <!-- 漢堡選單按鈕 -->
+        <a class="link-dark" id='hamburger-btn' data-bs-toggle="collapse" href="#collapse" role="button"
+            aria-expanded="false" aria-controls="collapse">
+            <span class="material-symbols-outlined">dehaze</span>
+        </a>
+        <!-- <a class="link-dark" id='close-btn' data-bs-toggle="collapse" href="#collapse" role="button"
+            aria-expanded="false" aria-controls="collapse">
+            <span class="material-symbols-outlined">
+                close
+            </span>
+        </a> -->
+    </div>
+    <!-- 漢堡選單下拉式選單 -->
+    <div class="collapse d-xl-none text-center" id="collapse">
+        <!-- 網站導覽區塊 -->
+        <div class="bg-bg-gray py-40 px-12">
+            <h3 class="title-border mx-auto fw-500 fs-6 border-dark border-top border-bottom py-2 mb-4">網站導覽</h3>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-4"><a class="fs-4 d-block w-100 h-100" href="#">
+                        <img class="me-2" src="../assets/images/paw.png" alt="">
+                        尋醫去
+                        <img class="ms-2" src="../assets/images/paw.png" alt="">
+                    </a></li>
+                <li class="mb-4"><a class="fs-4 d-block w-100 h-100" href="#">
+                        <img class="me-2" src="../assets/images/paw.png" alt="">
+                        近期活動
+                        <img class="ms-2" src="../assets/images/paw.png" alt="">
+                    </a></li>
+                <li class="mb-4"><a class="fs-4 d-block w-100 h-100" href="#">
+                        <img class="me-2" src="../assets/images/paw.png" alt="">
+                        毛孩知識庫
+                        <img class="ms-2" src="../assets/images/paw.png" alt="">
+                    </a></li>
+                <li class=""><a class="fs-4 d-block w-100 h-100" href="#">
+                        <img class="me-2" src="../assets/images/paw.png" alt="">
+                        毛孩社群
+                        <img class="ms-2" src="../assets/images/paw.png" alt="">
+                    </a></li>
+            </ul>
+        </div>
+        <!-- 會員服務區塊 -->
+        <div class="bg-bg-dark py-40 px-12">
+            <h3 class="title-border mx-auto fw-500 fs-6 border-dark border-top border-bottom py-2 mb-4">會員服務</h3>
+            <ul class="list-unstyled mb-4 d-flex gap-2">
+                <li class="flex-grow-1">
+                    <a class="btn btn-primary rounded-pill link-light py-12 w-100" href="">註冊</a>
+                </li>
+                <li class="flex-grow-1">
+                    <a class="btn btn-light rounded-pill link-dark border-dark py-12 w-100" href="">登入</a>
+                </li>
+            </ul>
+            <div>
+                <a class="btn btn-dark rounded-pill link-light py-12  d-flex align-items-center justify-content-center"
+                    href=""><span class="material-symbols-outlined me-1">
+                        pet_supplies
+                    </span>毛孩護照</a>
+            </div>
+        </div>
+    </div>
+    <!-- 進度：下拉式選單內容未做，漢堡按鈕變成x -->
+</header>
+<script src="../assets/js/header.js"></script>

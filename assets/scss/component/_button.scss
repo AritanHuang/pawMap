@@ -1,0 +1,15 @@
+//按鈕hover樣式
+.btn-primary:hover {
+    background-color: $dark;
+    border-color: $dark;
+}
+.btn-light:hover {
+    background-color: $accent-red;
+    border-color: $primary !important;
+    color: $primary !important;
+}
+.btn-dark:hover {
+    background-color: $accent-pink;
+    border-color: $accent-pink;
+    color: $dark !important;
+}
