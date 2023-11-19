@@ -2,3 +2,16 @@
 .title-border {
     max-width: 66px;
 }
+//文字透明度
+.dark10 {
+    color: rgba(79, 65, 63, 0.1);
+}
+.dark30 {
+    color: rgba(79, 65, 63, 0.3);
+}
+.dark50 {
+    color: rgba(79, 65, 63, 0.5);
+}
+.border-dark30 {
+    border: 1px solid rgba(79, 65, 63, 0.3);
+}
