@@ -319,6 +319,7 @@ $accent-yellow: #edbd41 !default;
 $accent-red: #fcf5f2 !default;
 $bg-gray: #f9f5ee !default;
 $bg-dark: #ede8de !default;
+$primary-light: #bc8262 !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -336,6 +337,7 @@ $theme-colors: (
     'accent-red': $accent-red,
     'bg-gray': $bg-gray,
     'bg-dark': $bg-dark,
+    'primary-light': $primary-light,
     // 'dark10': $dark10,
     // 'dark30': $dark30,
     // 'dark50': $dark50,,,,,
@@ -411,11 +413,24 @@ $spacers: (
 // Define the edge positioning anchors of the position utilities.
 
 // scss-docs-start position-map
+// $position-values: (
+//     0: 0,
+//     50: 50%,
+//     100: 100%,
+// ) !default;
 $position-values: (
     0: 0,
+    10: 10%,
+    18: 18%,
+    20: 20%,
+    25: 25%,
+    27: 27%,
+    28: 28%,
+    30: 30%,
+    40: 40%,
     50: 50%,
     100: 100%,
-) !default;
+) !default; //custom
 // scss-docs-end position-map
 
 // Body
