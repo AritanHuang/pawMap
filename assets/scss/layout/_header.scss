@@ -1,3 +1,8 @@
 .header-logo {
     @include hide-text;
 }
+//解決漢堡選單展開頁問題
+.collapse {
+    max-height: 75vh; /* 展開頁最大佔據螢幕的四分之三區塊 */
+    overflow-y: auto;
+}
