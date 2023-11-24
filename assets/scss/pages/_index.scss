@@ -9,3 +9,26 @@
 .banner-mobile {
     max-width: 351px;
 }
+//手機版圖片更換
+@include xl() {
+    .img-introduce1 {
+        content: url(/assets/images/Desktop_introduce_01.png);
+    }
+    .img-introduce-bg1 {
+        content: url(/assets/images/Desktop_introduce_bg_01.png);
+    }
+}
+@include pad() {
+    .img-introduce2 {
+        content: url(/assets/images/Desktop_introduce_02.png);
+    }
+    .img-introduce-bg2 {
+        content: url(/assets/images/Desktop_introduce_bg_02.png);
+    }
+    .img-introduce3 {
+        content: url(/assets/images/Desktop_introduce_03.png);
+    }
+    .img-introduce-bg3 {
+        content: url(/assets/images/Desktop_introduce_bg_03.png);
+    }
+}

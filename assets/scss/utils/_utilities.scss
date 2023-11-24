@@ -77,20 +77,24 @@ $utilities: map-merge(
         'top': (
             property: top,
             values: $position-values,
+            responsive: true,
         ),
         'bottom': (
             property: bottom,
             values: $position-values,
+            responsive: true,
         ),
         'start': (
             property: left,
             class: start,
             values: $position-values,
+            responsive: true,
         ),
         'end': (
             property: right,
             class: end,
             values: $position-values,
+            responsive: true,
         ),
         'translate-middle': (
             property: transform,
@@ -178,6 +182,8 @@ $utilities: map-merge(
                     50: 50%,
                     75: 75%,
                     100: 100%,
+                    241: 241px,
+                    //custom
                     auto: auto,
                 ),
             ),
@@ -536,6 +542,8 @@ $utilities: map-merge(
             property: font-size,
             class: fs,
             values: $font-sizes,
+            responsive: true,
+            //custom
         ),
         'font-style': (
             property: font-style,
@@ -555,6 +563,8 @@ $utilities: map-merge(
                 medium: $font-weight-medium,
                 //custom
             ),
+            responsive: true,
+            //custom
         ),
         'line-height': (
             property: line-height,
@@ -737,8 +747,21 @@ $utilities: map-merge(
                     visible: visible,
                     invisible: hidden,
                 ),
+            ),
+        // scss-docs-end utils-visibility
+        //custom-start
+        'letter-spacing':
+            (
+                property: letter-spacing,
+                class: ls,
+                values: (
+                    48: 0.48px,
+                    60: 0.6px,
+                    72: 0.72px,
+                    160: 1.6px,
+                ),
+                responsive: true,
             )
-            // scss-docs-end utils-visibility
     ),
     $utilities
 );
