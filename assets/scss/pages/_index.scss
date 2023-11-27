@@ -32,3 +32,29 @@
         content: url(/assets/images/Desktop_introduce_bg_03.png);
     }
 }
+.card {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+}
+.bg {
+    background-image: url(/assets/images/Mobile_bg.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    @include sm() {
+        //平板桌機版本
+        background-image: url(/assets/images/Desktop_bg.png);
+        // background-position:  center;
+        padding-top: 20%; /* 使用百分比适应不同高度的移动设备 */
+        padding-bottom: 10%; /* 使用百分比适应不同高度的移动设备 */
+        // padding-top: 170px;
+        // padding-bottom: 200px;
+    }
+    @include pad() {
+        padding-top: 15%;
+        padding-bottom: 10%;
+    }
+}

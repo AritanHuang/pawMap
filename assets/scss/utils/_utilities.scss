@@ -664,6 +664,8 @@ $utilities: map-merge(
             css-var: true,
             class: bg-opacity,
             values: (
+                0: 0,
+                //custom
                 10: 0.1,
                 25: 0.25,
                 50: 0.5,
