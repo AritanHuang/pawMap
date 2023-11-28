@@ -28,3 +28,10 @@
 .icon-fill {
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+//陰影
+.card-shadow {
+    box-shadow: 0px 2px 6px 0px rgba(156, 79, 46, 0.5), 0px 2px 24px 0px rgba(156, 79, 46, 0.5);
+}
+.btn-shadow {
+    box-shadow: 0px 0px 12px 0px #ffdfba;
+}
