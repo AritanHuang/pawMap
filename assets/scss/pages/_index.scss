@@ -35,7 +35,7 @@
 .bg {
     .card {
         width: 100%;
-        // max-width: 340px;
+        max-width: 340px;
         margin: 0 auto;
         @include sm() {
             max-width: 100%;
