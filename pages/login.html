@@ -4,7 +4,28 @@
 
   <body>
     <%- include('./layout/header'); -%>
-      <h1>登入頁</h1>
+      <section class="container">
+        <div class="row flex-column justify-content-center align-items-center vh-100">
+          <div class="col-md-6 col-lg-4">
+            <div class="mb-3">
+              <h3
+                class="text-primary fs-4 fs-md-2 fw-medium fw-md-normal ls-72 ls-md-160 pt-1 position-relative custom-border-top">
+                會員登入</h3>
+            </div>
+            <form class="mb-5">
+              <div class="mb-3">
+                <label for="Email1" class="form-label">帳號</label>
+                <input type="email" class="form-control" id="Email1" placeholder="請輸入email">
+              </div>
+              <div class="mb-4 mb-md-32">
+                <label for="Password" class="form-label">密碼</label>
+                <input type="password" class="form-control" id="Password">
+              </div>
+              <button type="submit" class="btn btn-primary rounded-pill link-light py-12 px-20 w-100">登入</button>
+            </form>
+          </div>
+        </div>
+      </section>
       <%- include('./layout/footer'); -%>
 
         <script type="module" src="../main.js"></script>
