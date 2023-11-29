@@ -5,3 +5,13 @@
         background-color: $accent-red !important;
     }
 }
+.hospital-card {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    @include sm() {
+        max-width: 100%;
+        // margin-left: 0px;
+        // margin-right: 0px;
+    }
+}

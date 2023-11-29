@@ -340,7 +340,7 @@ $theme-colors: (
     'primary-light': $primary-light,
     // 'dark10': $dark10,
     // 'dark30': $dark30,
-    // 'dark50': $dark50,,,,,,,,,,,,,,,,,
+    // 'dark50': $dark50,,,,,,,,,,,,,,,,,,
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -405,6 +405,7 @@ $spacers: (
     20: 20px,
     32: 32px,
     40: 40px,
+    60: 60px,
     68: 68px,
     80: 80px,
     100: 100px,

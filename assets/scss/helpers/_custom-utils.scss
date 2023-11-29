@@ -28,3 +28,8 @@
 .icon-fill {
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+//分頁hover
+.page-link:hover {
+    background-color: $dark;
+    color: $light;
+}
