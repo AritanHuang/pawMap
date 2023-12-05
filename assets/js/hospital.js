@@ -158,6 +158,11 @@ function generatePagination(total, perPage) {
                 currentPage = parseInt(page);
             }
             getCurrentData(currentPage);
+
+            // 將頁面滾動到頂部
+            window.scrollTo({
+                top: 0
+            });
         })
     })
 }
