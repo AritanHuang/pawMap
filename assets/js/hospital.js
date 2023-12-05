@@ -159,10 +159,13 @@ function generatePagination(total, perPage) {
             }
             getCurrentData(currentPage);
 
-            // 將頁面滾動到頂部
-            window.scrollTo({
-                top: 0
-            });
+            // 等待0.5秒將頁面滾動到頂部
+            setTimeout(() => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 500);
         })
     })
 }
