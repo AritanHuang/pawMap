@@ -22,8 +22,8 @@
 }
 //取消頁碼手機平板hover事件
 .page-link:hover {
-    background-color: initial !important;
-    color: initial !important;
+    background-color: $light !important;
+    color: $dark !important;
     @include mobile() {
         background-color: $dark !important;
         color: $light !important;
