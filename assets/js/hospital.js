@@ -143,12 +143,12 @@ function generatePagination(total, perPage) {
     pageButtons.forEach(item => {
         // 手機平板用戶點擊按鈕時會增加active
         item.addEventListener('touchstart', function () {
-            item.classList.add('active');
+            this.classList.add('active');
         });
         // 手機平板用戶放開點擊按鈕時會移除active
         item.addEventListener('touchend', function () {
             // 移除活动状态类
-            item.classList.remove('active');
+            this.classList.remove('active');
         });
         item.addEventListener('click', function (e) {
             e.preventDefault();
