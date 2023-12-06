@@ -141,6 +141,15 @@ function generatePagination(total, perPage) {
     const pageButtons = document.querySelectorAll('.page-link');
     //頁面上頁碼按鈕跑迴圈
     pageButtons.forEach(item => {
+        // 手機平板用戶點擊按鈕時會增加active
+        item.addEventListener('touchstart', function () {
+            item.classList.add('active');
+        });
+        // 手機平板用戶放開點擊按鈕時會移除active
+        item.addEventListener('touchend', function () {
+            // 移除活动状态类
+            item.classList.remove('active');
+        });
         item.addEventListener('click', function (e) {
             e.preventDefault();
             const page = e.target.getAttribute('data-id');
@@ -159,13 +168,13 @@ function generatePagination(total, perPage) {
             }
             getCurrentData(currentPage);
 
-            // 等待0.5秒將頁面滾動到頂部
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 500);
+            // 等待0.5秒將頁面滾動到頂部 
+            // setTimeout(() => {
+            //     window.scrollTo({
+            //         top: 0,
+            //         behavior: 'smooth'
+            //     });
+            // }, 500);
         })
     })
 }
