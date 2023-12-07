@@ -1,12 +1,15 @@
-import axios from "axios";
+import axios, { Axios } from "axios";
+import Swal from "sweetalert2";
 import { apiUrl } from "./config";
-import { getArea } from "./utils";
+import { splitArea } from "./utils";
 const hospitalList = document.querySelector('#hospital-list');
+const pagination = document.querySelector('#pagination');
 let hospitalTotalData = [];
 let hospitalPerData = [];
 let hospitalLength = 0;
 let perPage = 12;
 let currentPage = 1;
+let areaData = [];
 
 //取全部新北寵物醫院資料
 function init() {
@@ -16,6 +19,7 @@ function init() {
             hospitalLength = hospitalTotalData.length;
             //初始載入第一頁資料
             getCurrentData(1);
+            getArea();
         })
         .catch(function (err) {
             console.log(err);
@@ -24,13 +28,15 @@ function init() {
 init();
 //渲染動物醫院
 function renderHospitalData() {
+    const hospitalSearch = document.querySelector('#hospital-search')
     let hospitalStr = '';
+    let hospitalNum = 0;
     hospitalPerData.forEach(function (item) {
         let area = '';
         // 檢查 '機構地址' 是否存在
         if (item['機構地址']) {
             let hospitalAddress = item['機構地址'];
-            area = getArea(hospitalAddress);
+            area = splitArea(hospitalAddress);
         }
         // console.log(hospitalArea);
         hospitalStr += ` <li class="col-12 col-sm-6 col-lg-4 ">
@@ -69,12 +75,17 @@ function renderHospitalData() {
                 </div>
             </div>
         </li>`;
+        //計算顯示比數
+        hospitalNum++;
     })
     hospitalList.innerHTML = hospitalStr;
+    if (hospitalNum === 0) {
+        Swal.fire("本地區目前尚無寵物醫院資料");
+    }
+    hospitalSearch.textContent = `本次搜尋共${hospitalNum}筆`;
 }
 //生成分頁
 function generatePagination(total, perPage) {
-    const pagination = document.querySelector('#pagination');
     let pageStr = ''
     //無條件進入取頁面整數
     const totalPages = Math.ceil(total / perPage);
@@ -160,12 +171,12 @@ function generatePagination(total, perPage) {
             getCurrentData(currentPage);
 
             // 等待0.8秒將頁面滾動到頂部 
-            setTimeout(() => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }, 800);
+            // setTimeout(() => {
+            //     window.scrollTo({
+            //         top: 0,
+            //         behavior: 'smooth'
+            //     });
+            // }, 800);
         })
     })
 }
@@ -182,4 +193,41 @@ function getCurrentData(page) {
         .catch(err => {
             console.log(err);
         })
+}
+
+//取得行政區資料
+function getArea() {
+    axios.get(`${apiUrl}/areas`)
+        .then(res => {
+            areaData = res.data;
+            renderArea();
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+//渲染行政區選單
+function renderArea() {
+    const district = document.querySelector('#district');
+    let areaStr = '<option value="" disabled selected>請選擇行政區</option>';
+    areaData.forEach(item => {
+        areaStr += ` <option value="${item.englishName}">${item.name}</option>`
+    })
+    district.innerHTML = areaStr;
+    district.addEventListener('change', e => {
+        hospitalPerData = [];
+        areaData.forEach(areaItem => {
+            if (areaItem.englishName === e.target.value) {
+                hospitalTotalData.forEach(hospitalItem => {
+                    let area = splitArea(hospitalItem['機構地址']);
+                    if (area === areaItem.name) {
+                        hospitalPerData.push(hospitalItem);
+                    }
+                })
+            }
+        })
+        renderHospitalData();
+        //先預設把頁碼拿掉
+        pagination.classList.add('d-none');
+    })
 }
