@@ -24,7 +24,7 @@
 .page-link:hover {
     background-color: initial !important;
     color: initial !important;
-    @include mobile() {
+    @include pad() {
         background-color: $dark !important;
         color: $light !important;
     }
