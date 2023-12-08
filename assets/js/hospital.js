@@ -1,7 +1,7 @@
 import axios, { Axios } from "axios";
 import Swal from "sweetalert2";
 import { apiUrl } from "./config";
-import { splitArea } from "./utils";
+import { splitArea, scrollToTop } from "./utils";
 const hospitalList = document.querySelector('#hospital-list');
 const pagination = document.querySelector('#pagination');
 let hospitalTotalData = [];
@@ -80,7 +80,7 @@ function renderHospitalData() {
     })
     hospitalList.innerHTML = hospitalStr;
     if (hospitalNum === 0) {
-        Swal.fire("本地區目前尚無寵物醫院資料");
+        Swal.fire("很抱歉，本區域尚無資料");
     }
     hospitalSearch.textContent = `本次搜尋共${hospitalNum}筆`;
 }
@@ -231,3 +231,10 @@ function renderArea() {
         pagination.classList.add('d-none');
     })
 }
+
+//點擊logo回到頁面上方
+const topButton = document.querySelector('#top-link');
+topButton.addEventListener('click', e => {
+    e.preventDefault();
+    scrollToTop();
+})
