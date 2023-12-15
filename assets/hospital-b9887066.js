@@ -1,4 +1,4 @@
-import"./bootstrap.min-1d37006c.js";import{a as g,b as f,S as x}from"./sweetalert2.all-dee922f7.js";function m(e){return e.substring(3,6)}function S(){window.scrollTo({top:0,behavior:"smooth"})}const q=document.querySelector("#hospital-list"),b=document.querySelector("#pagination");let p=[],d=[],v=0,h=12,n=1,u=[];function w(){g.get(`${f}/hospitals`).then(function(e){p=e.data,v=p.length,y(1),L()}).catch(function(e){console.log(e)})}w();function k(){const e=document.querySelector("#hospital-search");let i="",t=0;d.forEach(function(a){let s="";if(a.機構地址){let o=a.機構地址;s=m(o)}i+=` <li class="col-12 col-sm-6 col-lg-4 ">
+import"./bootstrap.min-1d37006c.js";import{S as m,a as g,b as f}from"./sweetalert2.all-dee922f7.js";function b(e){return e.substring(3,6)}function q(){window.scrollTo({top:0,behavior:"smooth"})}const v=document.querySelector("#hospital-list"),k=document.querySelector("#pagination");let p=[],d=[],y=0,h=12,n=1,u=[];function w(){g.get(`${f}/hospitals`).then(function(e){p=e.data,y=p.length,x(1),P()}).catch(function(e){console.log(e)})}w();function $(){const e=document.querySelector("#hospital-search");let l="",t=0;d.forEach(function(a){let s="";if(a.機構地址){let o=a.機構地址;s=b(o)}l+=` <li class="col-12 col-sm-6 col-lg-4 ">
             <div class="card rounded-5 card-shadow hospital-card h-100">
                 <div class="card-body p-3 p-lg-4">
                     <div class="d-flex justify-content-between align-items-center mb-12">
@@ -25,7 +25,7 @@ import"./bootstrap.min-1d37006c.js";import{a as g,b as f,S as x}from"./sweetaler
                     </ul>
                 </div>
                 <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
-                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center" href="">
+                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect"  href="">
                         <span class="material-symbols-outlined fs-2 me-2">
                             favorite
                         </span>
@@ -33,7 +33,7 @@ import"./bootstrap.min-1d37006c.js";import{a as g,b as f,S as x}from"./sweetaler
                     </a>
                 </div>
             </div>
-        </li>`,t++}),q.innerHTML=i,t===0&&x.fire("很抱歉，本區域尚無資料"),e.textContent=`本次搜尋共${t}筆`}function P(e,i){let t="";const a=Math.ceil(e/i),s=5;let o=1,r=a;if(a>s){const l=Math.floor(s/2);o=n-l,r=n+l,o<1?(o=1,r=s):r>a&&(r=a,o=a-s+1)}n===1?t+=`<li class="page-item">
+        </li>`,t++}),v.innerHTML=l,t===0&&m.fire("很抱歉，本區域尚無資料"),e.textContent=`本次搜尋共${t}筆`}function L(e,l){let t="";const a=Math.ceil(e/l),s=5;let o=1,r=a;if(a>s){const i=Math.floor(s/2);o=n-i,r=n+i,o<1?(o=1,r=s):r>a&&(r=a,o=a-s+1)}n===1?t+=`<li class="page-item">
                     <a class="page-link disabled" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -41,7 +41,7 @@ import"./bootstrap.min-1d37006c.js";import{a as g,b as f,S as x}from"./sweetaler
         <a class="page-link" id="previous-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
         </a>
-    </li>`;for(let l=o;l<=r;l++)l===n?t+=`<li class="page-item"><a class="page-link active" data-id="${l} " href="#">${l}</a></li>`:t+=`<li class="page-item"><a class="page-link" data-id="${l}" href="#">${l}</a></li>`;n===a?t+=`<li class="page-item">
+    </li>`;for(let i=o;i<=r;i++)i===n?t+=`<li class="page-item"><a class="page-link active" data-id="${i} " href="#">${i}</a></li>`:t+=`<li class="page-item"><a class="page-link" data-id="${i}" href="#">${i}</a></li>`;n===a?t+=`<li class="page-item">
         <a class="page-link disabled" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
         </a>
@@ -49,4 +49,4 @@ import"./bootstrap.min-1d37006c.js";import{a as g,b as f,S as x}from"./sweetaler
                     <a class="page-link" id="next-link" href="#" aria-label="Next">
                         <span  aria-hidden="true">&raquo;</span>
                     </a>
-                </li>`,b.innerHTML=t,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",function(c){c.preventDefault();const $=c.target.getAttribute("data-id");c.currentTarget.getAttribute("id")==="next-link"?n++:c.currentTarget.getAttribute("id")==="previous-link"?n--:n=parseInt($),y(n)})})}function y(e){g.get(`${f}/hospitals?_page=${e}&_limit=${h}`).then(i=>{d=i.data,k(),P(v,h)}).catch(i=>{console.log(i)})}function L(){g.get(`${f}/areas`).then(e=>{u=e.data,T()}).catch(e=>{console.log(e)})}function T(){const e=document.querySelector("#district");let i='<option value="" disabled selected>請選擇行政區</option>';u.forEach(t=>{i+=` <option value="${t.englishName}">${t.name}</option>`}),e.innerHTML=i,e.addEventListener("change",t=>{d=[],u.forEach(a=>{a.englishName===t.target.value&&p.forEach(s=>{m(s.機構地址)===a.name&&d.push(s)})}),k(),b.classList.add("d-none")})}const A=document.querySelector("#top-link");A.addEventListener("click",e=>{e.preventDefault(),S()});
+                </li>`,k.innerHTML=t,document.querySelectorAll(".page-link").forEach(i=>{i.addEventListener("click",function(c){c.preventDefault();const S=c.target.getAttribute("data-id");c.currentTarget.getAttribute("id")==="next-link"?n++:c.currentTarget.getAttribute("id")==="previous-link"?n--:n=parseInt(S),x(n)})})}function x(e){g.get(`${f}/hospitals?_page=${e}&_limit=${h}`).then(l=>{d=l.data,$(),L(y,h)}).catch(l=>{console.log(l)})}function P(){g.get(`${f}/areas`).then(e=>{u=e.data,D()}).catch(e=>{console.log(e)})}function D(){const e=document.querySelector("#district");let l='<option value="" disabled selected>請選擇行政區</option>';u.forEach(t=>{l+=` <option value="${t.englishName}">${t.name}</option>`}),e.innerHTML=l,e.addEventListener("change",t=>{d=[],u.forEach(a=>{a.englishName===t.target.value&&p.forEach(s=>{b(s.機構地址)===a.name&&d.push(s)})}),$(),k.classList.add("d-none")})}const E=document.querySelector("#top-link");E.addEventListener("click",e=>{e.preventDefault(),q()});v.addEventListener("click",e=>{e.preventDefault(),e.target.classList.contains("btn-collect")&&(localStorage.getItem("token")?console.log("有登入"):m.fire({icon:"error",title:"Oops...",text:"請先登入",footer:'<a href="login.html">登入</a>'}))});
