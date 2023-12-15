@@ -64,6 +64,14 @@ function logIn() {
         logInEmail.value = '';
         logInPassword.value = '';
     }).catch(err => {
-        console.log(err);
+        // console.log(err);
+        Swal.fire({
+            icon: "error",
+            title: "登入失敗!",
+            text: "請確認您的登入資訊",
+            footer: '<a href="signup.html">尚未註冊?</a>'
+        });
+        logInEmail.value = '';
+        logInPassword.value = '';
     })
 }
