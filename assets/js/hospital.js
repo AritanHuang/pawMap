@@ -66,7 +66,7 @@ function renderHospitalData() {
                     </ul>
                 </div>
                 <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
-                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center" href="">
+                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect"  href="">
                         <span class="material-symbols-outlined fs-2 me-2">
                             favorite
                         </span>
@@ -237,4 +237,23 @@ const topButton = document.querySelector('#top-link');
 topButton.addEventListener('click', e => {
     e.preventDefault();
     scrollToTop();
+})
+
+//點擊收藏按鈕
+hospitalList.addEventListener('click', e => {
+    e.preventDefault();
+    if (e.target.classList.contains('btn-collect')) {
+        const token = localStorage.getItem('token');
+        if (token) {
+            console.log('有登入');//收藏功能待寫
+        }
+        else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "請先登入",
+                footer: '<a href="login.html">登入</a>'
+            });
+        }
+    }
 })
