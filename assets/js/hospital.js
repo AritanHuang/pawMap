@@ -245,7 +245,12 @@ hospitalList.addEventListener('click', e => {
     if (e.target.classList.contains('btn-collect')) {
         const token = localStorage.getItem('token');
         if (token) {
-            console.log('有登入');//收藏功能待寫
+            Swal.fire({
+                icon: "success",
+                title: "成功收藏",
+                showConfirmButton: false,
+                timer: 1500
+            });//收藏功能待寫
         }
         else {
             Swal.fire({
