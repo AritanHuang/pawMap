@@ -13,8 +13,8 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>PawMap</title>
-  <script type="module" crossorigin src="/pawMap/assets/hospital-693710d8.js"></script>
-  <link rel="modulepreload" crossorigin href="/pawMap/assets/bootstrap.min-4cf75e1e.js">
+  <script type="module" crossorigin src="/pawMap/assets/hospital-9b17a81d.js"></script>
+  <link rel="modulepreload" crossorigin href="/pawMap/assets/bootstrap.min-8d685ea4.js">
   <link rel="modulepreload" crossorigin href="/pawMap/assets/axios-4008c28b.js">
   <link rel="stylesheet" href="/pawMap/assets/bootstrap-d4394207.css">
 </head>
@@ -100,10 +100,15 @@
             <h3 class="title-border mx-auto fw-500 fs-6 border-dark border-top border-bottom py-2 mb-4">會員服務</h3>
             <ul class="list-unstyled mb-4 d-flex gap-2">
                 <li class="flex-grow-1">
-                    <a class="btn btn-primary rounded-pill link-light py-12 w-100" href="signup.html">註冊</a>
+                    <a class="btn btn-primary rounded-pill link-light py-12 w-100" id="mobile-signup"
+                        href="signup.html">註冊</a>
                 </li>
-                <li class="flex-grow-1">
+                <li class="flex-grow-1" id="mobile-login">
                     <a class="btn btn-light rounded-pill link-dark border-dark30 py-12 w-100" href="login.html">登入</a>
+                </li>
+                <li class="flex-grow-1 d-none" id="mobile-logout">
+                    <a class="btn btn-light rounded-pill link-dark border-dark30 py-12 w-100" id="btn-mobile-logout"
+                        href="#">登出</a>
                 </li>
             </ul>
             <div>
