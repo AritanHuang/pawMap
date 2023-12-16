@@ -54,15 +54,17 @@ function logIn() {
         password: logInPassword.value
     }).then(res => {
         const token = res.data.accessToken;
+        // console.log(token);
         localStorage.setItem('token', token);
-        Swal.fire({
-            icon: "success",
-            title: "登入成功",
-            showConfirmButton: false,
-            timer: 1500
-        });
+        // Swal.fire({
+        //     icon: "success",
+        //     title: "登入成功",
+        //     showConfirmButton: false,
+        //     timer: 1500
+        // });
         logInEmail.value = '';
         logInPassword.value = '';
+        window.location.href = 'index.html';
     }).catch(err => {
         // console.log(err);
         Swal.fire({
