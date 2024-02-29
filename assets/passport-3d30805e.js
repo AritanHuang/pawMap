@@ -1,0 +1,1 @@
+import{S as e}from"./bootstrap.min-361b4cd4.js";import{a,b as r}from"./axios-4008c28b.js";const n=localStorage.getItem("token"),t=localStorage.getItem("userId");function s(){n||t?a.get(`${r}/users/${t}`).then(function(o){console.log(o.data)}).catch(function(o){console.log(o)}):e.fire({icon:"error",title:"請先登入或註冊",text:"必須是會員才能使用此功能",footer:'<a href="login.html">登入</a>'})}s();
