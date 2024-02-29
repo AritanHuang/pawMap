@@ -16,9 +16,11 @@ function checkLogIn() {
     const headerSignUp = document.querySelector('#header-signup');
     const headerLogIn = document.querySelector('#header-login');
     const headerLogOut = document.querySelector('#header-logout');
+    const headerPassport = document.querySelector('#header-passport');
     const mobileSignUp = document.querySelector('#mobile-signup');
     const mobileLogIn = document.querySelector('#mobile-login');
     const mobileLogOut = document.querySelector('#mobile-logout');
+    const mobilePassport = document.querySelector('#mobile-passport');
     if (token) {
         headerLogIn.classList.add('d-none');
         headerSignUp.classList.add('d-none');
@@ -26,6 +28,8 @@ function checkLogIn() {
         mobileSignUp.classList.add('disabled');
         mobileLogIn.classList.add('d-none');
         mobileLogOut.classList.remove('d-none');
+        headerPassport.classList.remove('d-none');
+        mobilePassport.classList.remove('d-none');
     }
     else {
         headerLogIn.classList.remove('d-none');
@@ -34,6 +38,8 @@ function checkLogIn() {
         mobileSignUp.classList.remove('disabled');
         mobileLogIn.classList.remove('d-none');
         mobileLogOut.classList.add('d-none');
+        headerPassport.classList.add('d-none');
+        mobilePassport.classList.add('d-none');
     }
 }
 checkLogIn();
@@ -52,6 +58,7 @@ btnMobileLogout.addEventListener('click', e => {
 })
 
 function logOut() {
-    localStorage.removeItem('token');
+    //清除localstorage的所有資料
+    localStorage.clear();
     window.location.href = 'index.html';
 }

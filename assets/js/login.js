@@ -54,8 +54,9 @@ function logIn() {
         password: logInPassword.value
     }).then(res => {
         const token = res.data.accessToken;
-        // console.log(token);
+        const userId = res.data.user.id;
         localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
         // Swal.fire({
         //     icon: "success",
         //     title: "登入成功",
