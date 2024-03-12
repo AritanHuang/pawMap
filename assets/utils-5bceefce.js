@@ -1,0 +1,1 @@
+function i(e){return e.substring(3,6)}function n(){window.scrollTo({top:0,behavior:"smooth"})}function t(e){let s={};return e.petGender==="male"?s.petGender="男":e.petGender==="female"&&(s.petGender="女"),e.isSpayed==="true"?s.isSpayed="是":e.isSpayed==="false"&&(s.isSpayed="否"),s}export{n as a,t as d,i as s};
