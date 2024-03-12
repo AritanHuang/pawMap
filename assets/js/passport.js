@@ -39,9 +39,9 @@ function renderUserData() {
         passportContent.innerHTML = `<div class="d-flex flex-column flex-lg-row 
         align-items-center
         justify-content-md-between align-items-md-center">
-    <div class="mb-3 mb-lg-0">
+        <div class="mb-3 mb-lg-0">
         <img class="rounded-circle" src="${userData.petPhoto}" alt="Pet Photo"
-            width="200" height="200">
+            width="200" height="200" style="object-fit: cover; object-position: center;">
     </div>
     <div class="passport-info">
         <p class="fs-lg-5 mb-2">名字: <span id="petName">${userData.petName}</span></p>
