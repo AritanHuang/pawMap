@@ -11,3 +11,32 @@ export function scrollToTop() {
         behavior: 'smooth' // 使用 smooth 滚动效果
     });
 }
+
+//判斷性別
+// export function displayGenderInChinese(userData) {
+//     // 將 male 或 female 轉換為 男生 或 女生
+//     let petGender;
+//     if (userData.petGender === 'male') {
+//         petGender = '男';
+//     } else if (userData.petGender === 'female') {
+//         petGender = '女';
+//     }
+//     return petGender;
+// }
+
+export function displayUserData(userData) {
+    // 將 male 或 female 轉換為 男生 或 女生
+    let newUserData = {};
+    if (userData.petGender === 'male') {
+        newUserData.petGender = '男';
+    } else if (userData.petGender === 'female') {
+        newUserData.petGender = '女';
+    }
+    if (userData.isSpayed === 'true') {
+        newUserData.isSpayed = '是';
+    }
+    else if (userData.isSpayed === 'false') {
+        newUserData.isSpayed = '否';
+    }
+    return newUserData;
+}

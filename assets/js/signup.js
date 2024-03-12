@@ -9,6 +9,7 @@ const email = document.querySelector('#Email');
 const password = document.querySelector('#Password');
 const petName = document.querySelector('#petName');
 const petBreed = document.querySelector('#petBreed');
+const petWeight = document.querySelector('#petWeight');
 const petBirthday = document.querySelector('#petBirthday');
 const address = document.querySelector('#address');
 const petPhoto = document.querySelector('#petPhoto');
@@ -51,6 +52,7 @@ signUpButton.addEventListener('click', e => {
     userData.password = password.value;
     userData.petName = petName.value;
     userData.petBreed = petBreed.value;
+    userData.petWeight = petWeight.value;
     userData.petBirthday = petBirthday.value;
     userData.address = address.value;
     userData.petPhoto = imgUrl;
@@ -63,7 +65,7 @@ signUpButton.addEventListener('click', e => {
 //表單驗證
 function checkValue() {
     const signUpForm = document.querySelector('#sign-up-form');
-    const inputs = document.querySelectorAll("input[type=text],input[type=password],input[type=email],input[type=date],input[type=file]");
+    const inputs = document.querySelectorAll("input[type=text],input[type=password],input[type=email],input[type=date],input[type=file],input[type=number]");
     const constraints = {
         信箱: {
             presence: {
@@ -88,6 +90,11 @@ function checkValue() {
             }
         },
         寵物品種: {
+            presence: {
+                message: "為必填欄位"
+            }
+        },
+        寵物體重: {
             presence: {
                 message: "為必填欄位"
             }
@@ -136,6 +143,7 @@ function checkValue() {
                 petName.value = '';
                 petPhoto.value = '';
                 petBreed.value = '';
+                petWeight.value = '';
                 petBirthday.value = '';
                 address.value = '';
             })

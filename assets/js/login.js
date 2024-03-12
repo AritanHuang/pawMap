@@ -65,7 +65,7 @@ function logIn() {
         // });
         logInEmail.value = '';
         logInPassword.value = '';
-        window.location.href = 'index.html';
+        window.location.href = 'passport.html';
     }).catch(err => {
         // console.log(err);
         Swal.fire({
