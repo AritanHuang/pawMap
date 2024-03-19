@@ -1,6 +1,7 @@
 import axios from "axios";
 import validate from "validate.js";//表單驗證套件
 import Swal from "sweetalert2";//提醒視窗套件
+import flatpickr from "flatpickr";//日期選擇器套件
 import { apiUrl } from "./config";
 const clientId = '54125f1145322a9';
 const imgurToken = 'a0461da17c62e537d08e30497baa2ddd0d56a826';
@@ -21,6 +22,7 @@ const petPhoto = document.querySelector('#petPhoto');
 const signUpButton = document.querySelector('#signup-btn');
 let imgUrl = '';
 let userData = {};
+
 //取得圖片網址
 petPhoto.addEventListener('change', function (e) {
     const imgFile = e.target.files[0];
@@ -158,3 +160,8 @@ function checkValue() {
     }
 }
 
+// Flatpickr套件
+const config = {
+    maxDate: 'today'
+}
+flatpickr("input[type=date]", config);

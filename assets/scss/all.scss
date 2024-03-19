@@ -10,6 +10,8 @@
 
 @import '../../node_modules/bootstrap';
 
+@import 'flatpickr/dist/flatpickr.min.css'; //flatpickr套件CSS樣式
+
 @import './helpers/grid'; //斷點
 @import './component/button'; //自訂按鈕component
 @import './component/card'; //自訂卡片component

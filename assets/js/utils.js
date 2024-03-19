@@ -12,18 +12,7 @@ export function scrollToTop() {
     });
 }
 
-//判斷性別
-// export function displayGenderInChinese(userData) {
-//     // 將 male 或 female 轉換為 男生 或 女生
-//     let petGender;
-//     if (userData.petGender === 'male') {
-//         petGender = '男';
-//     } else if (userData.petGender === 'female') {
-//         petGender = '女';
-//     }
-//     return petGender;
-// }
-
+//轉換使用者資料
 export function displayUserData(userData) {
     // 將 male 或 female 轉換為 男生 或 女生
     let newUserData = {};
