@@ -129,7 +129,7 @@
                     </div>
                     <ul class="nav justify-content-center justify-content-lg-end">
                         <li class="nav-item">
-                            <a class="nav-link  fs-md-5" href="passport-edit.html">修改資料</a>
+                            <a class="nav-link  fs-md-5" href="passport.html">毛孩護照</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link fs-md-5" href="#">健康管理</a>
@@ -139,40 +139,60 @@
                         </li>
                     </ul>
                 </div>
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-6 border p-5 bg-light rounded rounded-5 shadow-lg" id="passport-content">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                style="margin:auto;background:#fff;display:block;" width="200px" height="200px"
-                                viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-                                <rect x="17.5" y="30" width="15" height="40" fill="#e15b64">
-                                    <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
-                                        begin="-0.2s"></animate>
-                                    <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
-                                        begin="-0.2s"></animate>
-                                </rect>
-                                <rect x="42.5" y="30" width="15" height="40" fill="#f8b26a">
-                                    <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="20.999999999999996;30;30"
-                                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-                                    <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="58.00000000000001;40;40"
-                                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-                                </rect>
-                                <rect x="67.5" y="30" width="15" height="40" fill="#abbd81">
-                                    <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="20.999999999999996;30;30"
-                                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-                                    <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline"
-                                        keyTimes="0;0.5;1" values="58.00000000000001;40;40"
-                                        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-                                </rect>
-                            </svg>
-                        </div>
+                <div class="row justify-content-center">
+                    <div class="col-6 col-lg-4">
+                        <form class="mb-5">
+                            <div class="mb-3">
+                                <label for="petName" class="form-label">寵物名字</label>
+                                <input type="text" class="form-control" name="寵物名字" id="petName" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petBreed" class="form-label">寵物品種</label>
+                                <input type="text" class="form-control" name="寵物品種" id="petBreed" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petBirthday" class="form-label">寵物生日</label>
+                                <input type="date" class="form-control" name="寵物生日" id="petBirthday" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">地址</label>
+                                <input type="text" class="form-control" name="地址" id="address">
+                            </div>
+                            <div class="mb-3">
+                                <label for="petPhoto" class="form-label">更新寵物照片</label>
+                                <input class="form-control" type="file" id="petPhoto" name="寵物圖片">
+                            </div>
+                            <div class="mb-3">
+                                <label for="petWeight" class="form-label">寵物體重</label>
+                                <input type="number" class="form-control" name="寵物體重" id="petWeight" min="0" step="0.1">
+                            </div>
+                            <div class="mb-4 mb-lg-32">
+                                <label for="isSpayed" class="form-label">是否結紮</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="isSpayed" id="spayed"
+                                                value="true" checked>
+                                            <label class="form-check-label" for="spayed">
+                                                是
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="isSpayed" id="notSpayed"
+                                                value="false">
+                                            <label class="form-check-label" for="notSpayed">
+                                                否
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-primary rounded-pill link-light py-12 px-20 w-100">修改</button>
+                        </form>
                     </div>
-                </div>
             </section>
             <footer class=" bg-light pt-40 pb-20 text-center ">
     <div><a href="index.html"><img class="footer-logo" src="/pawMap/assets/logo_vertical-924d53ec.png" alt=""></a></div>
