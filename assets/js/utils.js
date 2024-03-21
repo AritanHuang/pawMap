@@ -29,3 +29,25 @@ export function displayUserData(userData) {
     }
     return newUserData;
 }
+//計算年齡
+export function countAge(petBirthday) {
+    const date = new Date();
+    const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth() + 1;
+    const currentDate = date.getDate();
+    const petYear = parseInt(petBirthday.substring(0, 4))
+    const petMonth = parseInt(petBirthday.substring(5, 7));
+    const petDate = parseInt(petBirthday.substring(8, 10));
+    let year = currentYear - petYear;
+    let month = currentMonth - petMonth;
+    let ageStr;
+    // 判斷是否過生日
+    if (petMonth > currentMonth || (petMonth === currentMonth && petDate > currentDate)) {
+        year -= 1;
+        month = 12 + month;
+        if (year < 0) {
+            year = 0;
+        }
+    }
+    return ageStr = `${year}歲${month}個月`;
+}

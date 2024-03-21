@@ -1,7 +1,7 @@
 import axios, { Axios } from "axios";
 import Swal from "sweetalert2";
 import { apiUrl } from "./config";
-import { splitArea, displayUserData } from "./utils";
+import { splitArea, displayUserData, countAge } from "./utils";
 
 const token = localStorage.getItem('token');
 const userId = localStorage.getItem('userId');
@@ -35,6 +35,7 @@ function renderUserData() {
     let petArea = splitArea(userData.address);
     let petGender = displayUserData(userData).petGender;
     let isSpayed = displayUserData(userData).isSpayed;
+    let patAge = countAge(userData.petBirthday);
     if (userData) {
         passportContent.innerHTML = `<div class="d-flex flex-column flex-lg-row 
         align-items-center
@@ -46,7 +47,7 @@ function renderUserData() {
     <div class="passport-info">
         <p class="fs-lg-5 mb-2">名字: <span id="petName">${userData.petName}</span></p>
         <p class="fs-lg-5 mb-2">生日: <span id="birthday">${userData.petBirthday}</span></p>
-        <p class="fs-lg-5 mb-2">年齡: <span id="age">Age</span></p>
+        <p class="fs-lg-5 mb-2">年齡: <span id="age">${patAge}</span></p>
         <p class="fs-lg-5 mb-2">所在地: <span id="location">${petArea}</span></p>
         <p class="fs-lg-5 mb-2">品種: <span id="breed">${userData.petBreed}</span></p>
         <p class="fs-lg-5 mb-2">性別: <span id="gender">${petGender}</span></p>
