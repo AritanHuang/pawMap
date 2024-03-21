@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./layout/head'); -%>
+
+    <body>
+        <%- include('./layout/header'); -%>
+            <section class="container mt-100 mt-lg-140 min-vh-100">
+                <div class="mb-4 mb-md-40">
+                    <div>
+                        <h3
+                            class="text-primary fs-4 fs-md-2 fw-medium fw-md-normal ls-72 ls-md-160 pt-1 position-relative custom-border-top mb-0 mb-lg-3">
+                            毛孩護照</h3>
+                    </div>
+                    <ul class="nav justify-content-center justify-content-lg-end">
+                        <li class="nav-item">
+                            <a class="nav-link  fs-md-5" href="passport.html">毛孩護照</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-md-5" href="#">健康管理</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-md-5" href="#">收藏列表</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-6 col-lg-4">
+                        <form class="mb-5">
+                            <div class="mb-3">
+                                <label for="petName" class="form-label">寵物名字</label>
+                                <input type="text" class="form-control" name="寵物名字" id="petName" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petBreed" class="form-label">寵物品種</label>
+                                <input type="text" class="form-control" name="寵物品種" id="petBreed" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="petBirthday" class="form-label">寵物生日</label>
+                                <input type="date" class="form-control" name="寵物生日" id="petBirthday" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">地址</label>
+                                <input type="text" class="form-control" name="地址" id="address">
+                            </div>
+                            <div class="mb-3">
+                                <label for="petPhoto" class="form-label">更新寵物照片</label>
+                                <input class="form-control" type="file" id="petPhoto" name="寵物圖片">
+                            </div>
+                            <div class="mb-3">
+                                <label for="petWeight" class="form-label">寵物體重</label>
+                                <input type="number" class="form-control" name="寵物體重" id="petWeight" min="0" step="0.1">
+                            </div>
+                            <div class="mb-4 mb-lg-32">
+                                <label for="isSpayed" class="form-label">是否結紮</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="isSpayed" id="spayed"
+                                                value="true" checked>
+                                            <label class="form-check-label" for="spayed">
+                                                是
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="isSpayed" id="notSpayed"
+                                                value="false">
+                                            <label class="form-check-label" for="notSpayed">
+                                                否
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-primary rounded-pill link-light py-12 px-20 w-100">修改</button>
+                        </form>
+                    </div>
+            </section>
+            <%- include('./layout/footer'); -%>
+
+                <script type="module" src="../main.js"></script>
+                <script type="module" src="../assets/js/config.js"></script>
+                <script type="module" src="../assets/js/utils.js"></script>
+                <script type="module" src="../assets/js/passport.js"></script>
+    </body>
+
+</html>
