@@ -1,3 +1,5 @@
+import axios from "axios";
+
 //取出地址區域
 export function splitArea(address) {
     return address.substring(3, 6);
@@ -51,3 +53,25 @@ export function countAge(petBirthday) {
     }
     return ageStr = `${year}歲${month}個月`;
 }
+
+//上傳圖片
+export function uploadImage(imgFile, imgurToken) {
+    return new Promise((resolve, reject) => {
+        const formData = new FormData();
+        formData.append('image', imgFile);
+        formData.append('album', 'dICFBxM');
+        axios.post('https://api.imgur.com/3/image', formData, {
+            headers: {
+                'Authorization': `Bearer ${imgurToken}`,
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+            .then(res => {
+                resolve(res.data.data.link);
+            })
+            .catch(err => {
+                reject(err);
+            });
+    });
+}
+

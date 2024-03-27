@@ -2,9 +2,10 @@ import axios from "axios";
 import validate from "validate.js";//表單驗證套件
 import Swal from "sweetalert2";//提醒視窗套件
 import flatpickr from "flatpickr";//日期選擇器套件
-import { apiUrl } from "./config";
+import { apiUrl, imgurToken } from "./config";
+import { uploadImage } from "./utils";
 const clientId = '54125f1145322a9';
-const imgurToken = 'a0461da17c62e537d08e30497baa2ddd0d56a826';
+
 
 const email = document.querySelector('#Email');
 const password = document.querySelector('#Password');
@@ -20,29 +21,46 @@ const petPhoto = document.querySelector('#petPhoto');
 
 
 const signUpButton = document.querySelector('#signup-btn');
-let imgUrl = '';
 let userData = {};
 
 //取得圖片網址
-petPhoto.addEventListener('change', function (e) {
-    const imgFile = e.target.files[0];
-    const formData = new FormData();
-    formData.append('image', imgFile);
-    //加入相簿
-    formData.append('album', 'dICFBxM');
-    axios.post('https://api.imgur.com/3/image', formData, {
-        headers: {
-            'Authorization': `Bearer ${imgurToken}`,
-            // Authorization: `Client-ID ${clientId}`,
-            'Content-Type': 'multipart/form-data'
-        }
-    })
-        .then(res => {
-            imgUrl = res.data.data.link;
-            // console.log(imgUrl);
+// petPhoto.addEventListener('change', function (e) {
+//     const imgFile = e.target.files[0];
+//     const formData = new FormData();
+//     formData.append('image', imgFile);
+//     //加入相簿
+//     formData.append('album', 'dICFBxM');
+//     axios.post('https://api.imgur.com/3/image', formData, {
+//         headers: {
+//             'Authorization': `Bearer ${imgurToken}`,
+//             // Authorization: `Client-ID ${clientId}`,
+//             'Content-Type': 'multipart/form-data'
+//         }
+//     })
+//         .then(res => {
+//             imgUrl = res.data.data.link;
+//             // console.log(imgUrl);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+// })
+//接收圖片網址
+let imgUrl = '';
+petPhoto.addEventListener('change', e => {
+    //避免圖片還沒上傳完
+    signUpButton.textContent = '圖片上傳中';
+    signUpButton.disabled = true;
+    uploadImage(e.target.files[0], imgurToken)
+        .then(resImgUrl => {
+            // console.log(resImgUrl);
+            imgUrl = resImgUrl;
+            signUpButton.textContent = '註冊';
+            signUpButton.disabled = false;
         })
         .catch(err => {
             console.log(err);
+            signUpButton.textContent = '圖片上傳失敗';
         })
 })
 
