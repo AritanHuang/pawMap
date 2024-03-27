@@ -60,7 +60,7 @@ petPhoto.addEventListener('change', e => {
         })
         .catch(err => {
             console.log(err);
-            signUpButton.textContent = '圖片上傳失敗';
+            Swal.fire("圖片上傳失敗，請稍候再試");
         })
 })
 
