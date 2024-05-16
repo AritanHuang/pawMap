@@ -16,7 +16,7 @@ import{S as p}from"./bootstrap.min-18d6e209.js";import{a as g,b as h}from"./axio
                                 </span>
                                 ${a.機構地址}
                             </a></li>
-                        <li><a class="d-flex align-items-center ls-48" href=tel:+"${a.機構電話}">
+                        <li><a class="d-flex align-items-center ls-48" href="tel:+${a.機構電話}">
                                 <span class="icon-fill material-symbols-outlined me-1 dark30">
                                     call
                                 </span>
