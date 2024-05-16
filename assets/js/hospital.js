@@ -57,7 +57,7 @@ function renderHospitalData() {
                                 </span>
                                 ${item['機構地址']}
                             </a></li>
-                        <li><a class="d-flex align-items-center ls-48" href=tel:+"${item['機構電話']}">
+                        <li><a class="d-flex align-items-center ls-48" href="tel:+${item['機構電話']}">
                                 <span class="icon-fill material-symbols-outlined me-1 dark30">
                                     call
                                 </span>
@@ -239,7 +239,7 @@ topButton.addEventListener('click', e => {
     scrollToTop();
 })
 
-//點擊收藏按鈕
+//點擊收藏按鈕--造成地址跟電話無法外部連結
 hospitalList.addEventListener('click', e => {
     e.preventDefault();
     if (e.target.classList.contains('btn-collect')) {

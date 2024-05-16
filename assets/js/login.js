@@ -53,10 +53,12 @@ function logIn() {
         email: logInEmail.value,
         password: logInPassword.value
     }).then(res => {
+        const petName = res.data.user.petName;
         const token = res.data.accessToken;
         const userId = res.data.user.id;
         localStorage.setItem('token', token);
         localStorage.setItem('userId', userId);
+        localStorage.setItem('petName', petName);
         // Swal.fire({
         //     icon: "success",
         //     title: "登入成功",
