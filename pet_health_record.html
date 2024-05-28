@@ -12,7 +12,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>PawMap</title>
-  <script type="module" crossorigin src="/pawMap/assets/bootstrap.min-2015cc09.js"></script>
+  <script type="module" crossorigin src="/pawMap/assets/pet_health_record-f58bfd34.js"></script>
+  <link rel="modulepreload" crossorigin href="/pawMap/assets/bootstrap.min-2015cc09.js">
+  <link rel="modulepreload" crossorigin href="/pawMap/assets/axios-03bd29ad.js">
   <link rel="stylesheet" href="/pawMap/assets/bootstrap-8b1eb18a.css">
 </head>
     <body>
@@ -139,10 +141,10 @@
                             <h4>XX的健康紀錄</h4>
                             <div class="add-todo my-3  d-flex">
                                 <input class="form-control w-200  me-3" type="text" id="newTodo" placeholder="新增一筆健康紀錄">
-                                <button type="button" class="btn  btn-primary link-light ">新增</button>
+                                <button type="button" class="btn  btn-primary link-light" id="btn-add-todo">新增</button>
                             </div>
-                            <ul class="list-unstyled border-top pt-3">
-                                <li class="d-flex mb-2">
+                            <ul id="todos-list" class="list-unstyled border-top pt-3">
+                                <!-- <li class="d-flex mb-2">
                                     <p class="d-flex align-items-center me-4
                                     me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
                                             pet_supplies
@@ -165,7 +167,7 @@
                                         </span>
                                         5/16吃了全能狗S</p>
                                     <button type="button" class="btn btn-danger link-light ">刪除</button>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
                     </div>
@@ -193,7 +195,7 @@
                 
                 
                 
-                <script type="module" src=""></script>
+                
     </body>
 
 </html>
