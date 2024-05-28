@@ -1,11 +1,12 @@
 import axios from "axios";
 import Swal from "sweetalert2";
-import { apiUrl, userId, token } from "./config";
+import { apiUrl, userId, token, petName } from "./config";
 
 let todoData = [];
 const todosList = document.querySelector('#todos-list');
 const newTodo = document.querySelector('#newTodo');
 const btnAddTodo = document.querySelector('#btn-add-todo');
+const todoTitle = document.querySelector('#todo-title');
 //初始化頁面
 function init() {
     //取得使用者待辦清單
@@ -34,6 +35,7 @@ function renderTodo() {
     </li>`
     })
     todosList.innerHTML = todoStr;
+    todoTitle.textContent = `${petName}的健康紀錄`;
 }
 btnAddTodo.addEventListener('click', function (e) {
     let todoObj = {};
