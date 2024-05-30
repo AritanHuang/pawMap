@@ -69,6 +69,7 @@ todosList.addEventListener('click', function (e) {
                     init();
                 })
                 .catch(err => {
+                    Swal.fire("刪除失敗，請稍後再試");
                     console.log(err);
                 })
         }
