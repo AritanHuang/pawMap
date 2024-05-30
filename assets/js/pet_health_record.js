@@ -55,3 +55,22 @@ btnAddTodo.addEventListener('click', function (e) {
         })
     newTodo.value = '';
 })
+//刪除todo資料
+todosList.addEventListener('click', function (e) {
+    todoData.forEach(function (item) {
+        if (parseInt(e.target.getAttribute('data-num')) === item.id) {
+            axios.delete(`${apiUrl}/600/todos/${item.id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(res => {
+                    // console.log(res);
+                    init();
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    })
+})
