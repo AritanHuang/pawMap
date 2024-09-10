@@ -66,7 +66,7 @@ function renderHospitalData() {
                     </ul>
                 </div>
                 <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
-                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect"  href="">
+                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect" href="">
                         <span class="material-symbols-outlined fs-2 me-2">
                             favorite
                         </span>
@@ -241,8 +241,9 @@ topButton.addEventListener('click', e => {
 
 //點擊收藏按鈕--造成地址跟電話無法外部連結
 hospitalList.addEventListener('click', e => {
-    e.preventDefault();
+    // e.preventDefault();
     if (e.target.classList.contains('btn-collect')) {
+        e.preventDefault();
         const token = localStorage.getItem('token');
         if (token) {
             Swal.fire({
