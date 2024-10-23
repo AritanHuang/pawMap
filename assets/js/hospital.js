@@ -1,6 +1,6 @@
 import axios, { Axios } from "axios";
 import Swal from "sweetalert2";
-import { apiUrl } from "./config";
+import { apiUrl, token, userId, petName } from "./config";
 import { splitArea, scrollToTop } from "./utils";
 const hospitalList = document.querySelector('#hospital-list');
 const pagination = document.querySelector('#pagination');
@@ -28,6 +28,8 @@ function init() {
 init();
 //渲染動物醫院
 function renderHospitalData() {
+    //重新載入頁面時檢查收藏按鈕狀態
+    checkAndSetCollectStatus()
     const hospitalSearch = document.querySelector('#hospital-search')
     let hospitalStr = '';
     let hospitalNum = 0;
@@ -44,7 +46,7 @@ function renderHospitalData() {
                 <div class="card-body p-3 p-lg-4">
                     <div class="d-flex justify-content-between align-items-center mb-12">
                         <span class="text-center bg-accent-yellow px-12 py-1 rounded-3">${area}</span>
-                        <p class="d-flex align-items-center justify-content-center dark50"><span
+                        <p id="favorite-count-${item.id}" class="d-flex align-items-center justify-content-center dark50"><span 
                                 class="icon-fill material-symbols-outlined dark30 me-2">
                                 favorite
                             </span>${item['被收藏次數']} 人收藏</p>
@@ -66,7 +68,7 @@ function renderHospitalData() {
                     </ul>
                 </div>
                 <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
-                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect" href="">
+                    <a id="btn-collect-${item.id}" class="link-primary ls-48 d-flex justify-content-center align-items-center btn-collect" data-id=${item.id} data-name=${item['機構名稱']} data-address=${item['機構地址']} data-tel=${item['機構電話']} data-collected=${item['被收藏次數']} data-area=${area} href="">
                         <span class="material-symbols-outlined fs-2 me-2">
                             favorite
                         </span>
@@ -239,19 +241,96 @@ topButton.addEventListener('click', e => {
     scrollToTop();
 })
 
-//點擊收藏按鈕--造成地址跟電話無法外部連結
+//點擊收藏按鈕
 hospitalList.addEventListener('click', e => {
+    // 確保點擊的元素為 .btn-collect 按鈕
     // e.preventDefault();
-    if (e.target.classList.contains('btn-collect')) {
+    const collectButton = e.target.closest('.btn-collect');
+    if (!collectButton) {
+        // 如果點擊的元素不是收藏按鈕，直接返回
+        return;
+    }
+    const buttonText = collectButton.innerText
+        .replace('favorite', '')
+        .replace('close', '')
+        .trim();
+    if (collectButton) {
         e.preventDefault();
-        const token = localStorage.getItem('token');
-        if (token) {
-            Swal.fire({
-                icon: "success",
-                title: "成功收藏",
-                showConfirmButton: false,
-                timer: 1500
-            });//收藏功能待寫
+        //收藏醫院
+        if (token && buttonText === '收藏這間醫院') {
+            let collectObj = {};
+            collectObj.userId = userId;
+            collectObj.hospitalId = collectButton.dataset.id;
+            collectObj['機構名稱'] = collectButton.dataset.name;
+            collectObj['機構地址'] = collectButton.dataset.address;
+            collectObj['機構區域'] = collectButton.dataset.area;
+            collectObj['機構電話'] = collectButton.dataset.tel;
+            collectObj.isCollected = 'true';
+            axios.post(`${apiUrl}/collects`, collectObj)
+                .then(res => {
+                    // console.log(res);
+                    collectButton.innerHTML = `<span class="material-symbols-outlined fs-2 me-2">
+                        close
+                    </span>
+                    取消收藏`;
+                    Swal.fire({
+                        icon: "success",
+                        title: `成功收藏${res.data['機構名稱']}`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    //若成功收藏則在該筆寵物醫院收藏數加一
+                    updateHospitalFavorite(res.data.hospitalId);
+                })
+                .catch(err => {
+                    console.log(err);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "收藏失敗請稍後再試"
+                    });
+                })
+        }
+        //刪除收藏
+        else if (token && buttonText === '取消收藏') {
+            axios.get(`${apiUrl}/collects?userId=${userId}&hospitalId=${collectButton.dataset.id}`)
+                .then(res => {
+                    const collect = res.data;
+                    if (collect) {
+                        axios.delete(`${apiUrl}/collects/${collect[0].id}`)
+                            .then(res => {
+                                // console.log(res.data);
+                                collectButton.innerHTML = `<span class="material-symbols-outlined fs-2 me-2">
+                                favorite
+                            </span>
+                            收藏這間醫院`;
+                                Swal.fire({
+                                    icon: "success",
+                                    title: `成功刪除${collectButton.dataset.name}`,
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                decreaseHospitalFavorite(collectButton.dataset.id);
+                            })
+                            .catch(err => {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: "收藏失敗請稍後再試"
+                                });
+                            })
+                    }
+                    else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "收藏失敗請稍後再試"
+                        });
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
         else {
             Swal.fire({
@@ -263,3 +342,69 @@ hospitalList.addEventListener('click', e => {
         }
     }
 })
+
+//將收藏數+1
+function updateHospitalFavorite(hospitalId) {
+    if (hospitalId) {
+        const favoriteCountElement = document.querySelector(`#favorite-count-${hospitalId}`)
+        axios.get(`${apiUrl}/hospitals/${hospitalId}`)
+            .then(res => {
+                // console.log(res);
+                const newFavoriteCount = res.data['被收藏次數'] + 1;
+                return axios.patch(`${apiUrl}/hospitals/${hospitalId}`, {
+                    '被收藏次數': newFavoriteCount
+                });
+            })
+            .then(res => {
+                // console.log(res);
+                favoriteCountElement.innerHTML = `<span class="icon-fill material-symbols-outlined dark30 me-2">
+                                favorite
+                            </span>${res.data['被收藏次數']} 人收藏`;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}
+//將收藏數-1
+function decreaseHospitalFavorite(hospitalId) {
+    if (hospitalId) {
+        const favoriteCountElement = document.querySelector(`#favorite-count-${hospitalId}`);
+        axios.get(`${apiUrl}/hospitals/${hospitalId}`)
+            .then(res => {
+                const newFavoriteCount = res.data['被收藏次數'] - 1;
+                return axios.patch(`${apiUrl}/hospitals/${hospitalId}`, {
+                    '被收藏次數': newFavoriteCount
+                })
+            })
+            .then(res => {
+                favoriteCountElement.innerHTML = `<span class="icon-fill material-symbols-outlined dark30 me-2">
+                                favorite
+                            </span>${res.data['被收藏次數']} 人收藏`;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+}
+
+//重新載入頁面時檢查收藏按鈕的顯示狀態
+function checkAndSetCollectStatus() {
+    if (token) {
+        axios.get(`${apiUrl}/users/${userId}/collects`)
+            .then(res => {
+                const collectData = res.data;
+                collectData.forEach(function (item) {
+                    const collectBtn = document.querySelector(`#btn-collect-${item.hospitalId}`);
+                    //若收藏的醫院在不同分頁就會出現按鈕綁定為null出錯
+                    if (item.isCollected && collectBtn !== null) {
+                        collectBtn.innerHTML = `<span class="material-symbols-outlined fs-2 me-2">
+                            close
+                        </span>
+                        取消收藏`;
+                    }
+                })
+            })
+            .catch(err => { console.log(err); })
+    }
+}
