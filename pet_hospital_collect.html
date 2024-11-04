@@ -12,7 +12,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>PawMap</title>
-  <script type="module" crossorigin src="/pawMap/assets/pet_health_record-796a8889.js"></script>
+  <script type="module" crossorigin src="/pawMap/assets/pet_hospital_collect-c2934901.js"></script>
   <link rel="modulepreload" crossorigin href="/pawMap/assets/bootstrap.min-2015cc09.js">
   <link rel="modulepreload" crossorigin href="/pawMap/assets/axios-744198d0.js">
   <link rel="stylesheet" href="/pawMap/assets/bootstrap-8b1eb18a.css">
@@ -124,53 +124,98 @@
                     <div>
                         <h3
                             class="text-primary fs-4 fs-md-2 fw-medium fw-md-normal ls-72 ls-md-160 pt-1 position-relative custom-border-top mb-0 mb-lg-3">
-                            毛孩護照-<span class="text-secondary fs-4">健康管理</span></h3>
+                            毛孩護照-<span class="text-secondary fs-4">收藏列表</span></h3>
                     </div>
                     <ul class="nav justify-content-center justify-content-lg-end">
-                        <li class="nav-item">
-                            <a class="nav-link  fs-md-5" href="passport.html">毛孩護照</a>
+                        <li class="nav-item"></li>
+                        <a class="nav-link fs-md-5" href="passport.html">毛孩護照</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-md-5" href="pet_hospital_collect.html">收藏列表</a>
+                            <a class="nav-link  fs-md-5" href="passport-edit.html">修改資料</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-md-5" href="pet_health_record.html">健康管理</a>
                         </li>
                     </ul>
                 </div>
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-xl-6 border p-32 bg-light rounded rounded-5 shadow-lg">
-                            <h4 id="todo-title">XX的健康紀錄</h4>
-                            <div class="add-todo my-3  d-flex">
-                                <input class="form-control w-200  me-3" type="text" id="newTodo" placeholder="新增一筆健康紀錄">
-                                <button type="button" class="btn  btn-primary link-light" id="btn-add-todo">新增</button>
+                    <ul class="list-unstyled row g-4 mb-0" id="pet-collect-list">
+                        <!-- <li class="col-12 col-sm-6 col-lg-4 ">
+                            <div class="card rounded-5 card-shadow hospital-card h-100">
+                                <div class="card-body p-3 p-lg-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-12">
+                                        <span class="text-center bg-accent-yellow px-12 py-1 rounded-3">林口區</span>
+                                        <p class="d-flex align-items-center justify-content-center dark50"><span
+                                                class="icon-fill material-symbols-outlined dark30 me-2">
+                                                favorite
+                                            </span>29 人收藏</p>
+                                    </div>
+                                    <h5 class="card-title fs-lg-4 fs-5 fw-medium ls-60 ls-lg-72">上弦動物醫院</h5>
+                                    <ul class="mb-0 list-unstyled">
+                                        <li class="mb-1"><a class="d-flex align-items-center ls-48" href="">
+                                                <span class="material-symbols-outlined icon-fill me-1 dark30">
+                                                    location_on
+                                                </span>
+                                                新北市林口區忠福路 129 號
+                                            </a></li>
+                                        <li><a class="d-flex align-items-center ls-48" href="tel:02 2609-0119">
+                                                <span class="icon-fill material-symbols-outlined me-1 dark30">
+                                                    call
+                                                </span>
+                                                02 2609-0119
+                                            </a></li>
+                                    </ul>
+                                </div>
+                                <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
+                                    <a class="link-primary ls-48 d-flex justify-content-center align-items-center"
+                                        href="">
+                                        <span class="material-symbols-outlined fs-2 me-2">
+                                            favorite
+                                        </span>
+                                        收藏這間醫院
+                                    </a>
+                                </div>
                             </div>
-                            <ul id="todos-list" class="list-unstyled border-top pt-3">
-                                <!-- <li class="d-flex mb-2">
-                                    <p class="d-flex align-items-center me-4
-                                    me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
-                                            pet_supplies
-                                        </span>
-                                        5/16吃了全能狗S</p>
-                                    <button type="button" class="btn btn-danger link-light ">刪除</button>
-                                </li>
-                                <li class="d-flex mb-2">
-                                    <p class="d-flex align-items-center me-4
-                                    me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
-                                            pet_supplies
-                                        </span>
-                                        5/16吃了全能狗S</p>
-                                    <button type="button" class="btn btn-danger link-light ">刪除</button>
-                                </li>
-                                <li class="d-flex mb-2">
-                                    <p class="d-flex align-items-center me-4
-                                    me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
-                                            pet_supplies
-                                        </span>
-                                        5/16吃了全能狗S</p>
-                                    <button type="button" class="btn btn-danger link-light ">刪除</button>
-                                </li> -->
-                            </ul>
-                        </div>
-                    </div>
+                        </li> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            style="margin: auto; background: rgb(249, 245, 238); display: block;" width="200px"
+                            height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                            <g>
+                                <circle cx="60" cy="50" r="4" fill="#fad96d">
+                                    <animate attributeName="cx" repeatCount="indefinite" dur="1s" values="95;35"
+                                        keyTimes="0;1" begin="-0.67s"></animate>
+                                    <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1s"
+                                        values="0;1;1" keyTimes="0;0.2;1" begin="-0.67s"></animate>
+                                </circle>
+                                <circle cx="60" cy="50" r="4" fill="#fad96d">
+                                    <animate attributeName="cx" repeatCount="indefinite" dur="1s" values="95;35"
+                                        keyTimes="0;1" begin="-0.33s"></animate>
+                                    <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1s"
+                                        values="0;1;1" keyTimes="0;0.2;1" begin="-0.33s"></animate>
+                                </circle>
+                                <circle cx="60" cy="50" r="4" fill="#fad96d">
+                                    <animate attributeName="cx" repeatCount="indefinite" dur="1s" values="95;35"
+                                        keyTimes="0;1" begin="0s"></animate>
+                                    <animate attributeName="fill-opacity" repeatCount="indefinite" dur="1s"
+                                        values="0;1;1" keyTimes="0;0.2;1" begin="0s"></animate>
+                                </circle>
+                            </g>
+                            <g transform="translate(-15 0)">
+                                <path d="M50 50L20 50A30 30 0 0 0 80 50Z" fill="#eab145" transform="rotate(90 50 50)">
+                                </path>
+                                <path d="M50 50L20 50A30 30 0 0 0 80 50Z" fill="#eab145">
+                                    <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite"
+                                        dur="1s" values="0 50 50;45 50 50;0 50 50" keyTimes="0;0.5;1">
+                                    </animateTransform>
+                                </path>
+                                <path d="M50 50L20 50A30 30 0 0 1 80 50Z" fill="#eab145">
+                                    <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite"
+                                        dur="1s" values="0 50 50;-45 50 50;0 50 50" keyTimes="0;0.5;1">
+                                    </animateTransform>
+                                </path>
+                            </g>
+                        </svg>
+                    </ul>
                 </div>
             </section>
             <footer class=" bg-light pt-40 pb-20 text-center ">
