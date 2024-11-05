@@ -10,7 +10,18 @@ function init() {
     axios.get(`${apiUrl}/collects?userId=${userId}&_expand=hospital`)
         .then(res => {
             petCollectData = res.data;
-            renderPetCollectData();
+            if (petCollectData.length > 0) {
+                renderPetCollectData();
+            }
+            else {
+                Swal.fire({
+                    title: "尚未有收藏紀錄",
+                    text: "目前還沒有收藏紀錄",
+                    icon: "warning",
+                    footer: '<a class="text-primary" href="hospital.html">前往寵物醫院列表收藏</a>'
+                });
+                petCollectList.innerHTML = `<p class="fs-1 text-center ">目前尚無收藏項目</p>`;
+            }
         })
         .catch(err => {
             console.log(err);
