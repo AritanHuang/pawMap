@@ -3,10 +3,10 @@ import Swal from "sweetalert2";
 import { apiUrl, token, userId, petName } from "./config";
 import { splitArea, scrollToTop } from "./utils";
 
+const petCollectList = document.querySelector('#pet-collect-list');
 //載入收藏清單卡片
 function init() {
     let petCollectData = [];
-    const petCollectList = document.querySelector('#pet-collect-list');
     axios.get(`${apiUrl}/collects?userId=${userId}&_expand=hospital`)
         .then(res => {
             petCollectData = res.data;
@@ -41,7 +41,7 @@ function init() {
                                         </div>
                                         <h5 class="card-title fs-lg-4 fs-5 fw-medium ls-60 ls-lg-72">${value['機構名稱']}</h5>
                                         <ul class="mb-0 list-unstyled">
-                                            <li class="mb-1"><a class="d-flex align-items-center ls-48" href="">
+                                            <li class="mb-1"><a class="d-flex align-items-center ls-48" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${value['機構地址']}">
                                                     <span class="material-symbols-outlined icon-fill me-1 dark30">
                                                         location_on
                                                     </span>
@@ -56,7 +56,7 @@ function init() {
                                         </ul>
                                     </div>
                                     <div class="card-footer bg-light rounded-bottom-5 overflow-hidden">
-                                        <a class="link-primary ls-48 d-flex justify-content-center align-items-center"
+                                        <a id="btn-delete-collect-${value.hospitalId}" class="link-primary ls-48 d-flex justify-content-center align-items-center btn-delete-collect" data-name="${value['機構名稱']}"data-id="${value.hospitalId}"
                                             href="">
                                             <span class="material-symbols-outlined fs-2 me-2">
                                                 close
@@ -71,3 +71,53 @@ function init() {
     }
 }
 init();
+//點擊取消收藏按鈕
+
+petCollectList.addEventListener('click', function (e) {
+    const deleteCollectBtn = e.target.closest('.btn-delete-collect');
+    if (!deleteCollectBtn) {
+        return;
+    }
+    else if (deleteCollectBtn) {
+        e.preventDefault();
+        const deleteHospitalId = deleteCollectBtn.dataset.id;
+        deleteCollect(deleteHospitalId, deleteCollectBtn);
+    }
+})
+//刪除收藏
+function deleteCollect(deleteId, deleteCollectBtn) {
+    axios.get(`${apiUrl}/collects?hospitalId=${deleteId}&userId=${userId}`)
+        .then(res => {
+            if (res.data) {
+                axios.delete(`${apiUrl}/collects/${res.data[0].id}`)
+                    .then(res => {
+                        //成功後顯示訊息
+                        Swal.fire(`取消收藏${deleteCollectBtn.dataset.name}`);
+                        //收藏數減一
+                        reduceFavoriteCount(deleteCollectBtn.dataset.id)
+                        //重新渲染頁面
+                        init();
+                    })
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            Swal.fire("刪除失敗請稍後再試!");
+        })
+}
+//刪除後收藏數減一
+function reduceFavoriteCount(id) {
+    axios.get(`${apiUrl}/hospitals/${id}`)
+        .then(res => {
+            const newFavoriteCount = res.data['被收藏次數'] - 1;
+            return axios.patch(`${apiUrl}/hospitals/${id}`, {
+                ['被收藏次數']: newFavoriteCount
+            })
+        })
+        .then(res => {
+            // console.log(res.data);
+        })
+        .catch(err => {
+            Swal.fire('發生錯誤請稍後再試');
+        })
+}
