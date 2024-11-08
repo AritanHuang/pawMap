@@ -1,4 +1,4 @@
-import{S as c}from"./bootstrap.min-2015cc09.js";import{a as n,b as a,u as i,t as l,p as f}from"./axios-744198d0.js";let s=[];const u=document.querySelector("#todos-list"),d=document.querySelector("#newTodo"),m=document.querySelector("#btn-add-todo"),p=document.querySelector("#todo-title");function r(){n.get(`${a}/users/${i}/todos`).then(e=>{s=e.data,b()}).catch(e=>{console.log(e)})}r();function b(){let e="";s.forEach(function(t){e+=`<li class="d-flex mb-2 justify-content-between">
+import{S as c}from"./bootstrap.min-2015cc09.js";import{a as n,b as a,u as i,t as l,p as f}from"./axios-7862a9ca.js";let s=[];const u=document.querySelector("#todos-list"),d=document.querySelector("#newTodo"),m=document.querySelector("#btn-add-todo"),p=document.querySelector("#todo-title");function r(){n.get(`${a}/users/${i}/todos`).then(e=>{s=e.data,b()}).catch(e=>{console.log(e)})}r();function b(){let e="";s.forEach(function(t){e+=`<li class="d-flex mb-2 justify-content-between">
         <p class="d-flex align-items-center  me-4
         me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
                 pet_supplies
