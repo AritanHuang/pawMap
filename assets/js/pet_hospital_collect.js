@@ -4,6 +4,7 @@ import { apiUrl, token, userId, petName } from "./config";
 import { splitArea, scrollToTop } from "./utils";
 
 const petCollectList = document.querySelector('#pet-collect-list');
+const btnDeleteCollectall = document.querySelector('#btn-delete-collectall');
 //載入收藏清單卡片
 function init() {
     let petCollectData = [];
@@ -21,6 +22,7 @@ function init() {
                     footer: '<a class="text-primary" href="hospital.html">前往寵物醫院列表收藏</a>'
                 });
                 petCollectList.innerHTML = `<p class="fs-1 text-center ">目前尚無收藏項目</p>`;
+                btnDeleteCollectall.classList.add('d-none');
             }
         })
         .catch(err => {
@@ -121,3 +123,39 @@ function reduceFavoriteCount(id) {
             Swal.fire('發生錯誤請稍後再試');
         })
 }
+
+//刪除全部收藏項目
+btnDeleteCollectall.addEventListener('click', function (e) {
+    e.preventDefault();
+    axios.get(`${apiUrl}/collects?userId=${userId}`)
+        .then(res => {
+            // console.log(res.data);
+            const collectsToDelete = res.data;
+            const deleteRequests = collectsToDelete.map(item => {
+                return axios.delete(`${apiUrl}/collects/${item.id}`)
+            })
+            return Promise.all(deleteRequests).then(deleteResponse => {
+                // console.log(deleteResponse);
+                //更新醫院收藏次數
+                const updateRequests = collectsToDelete.map(item => {
+                    return axios.get(`${apiUrl}/hospitals/${item.hospitalId}`)
+                        .then(res => {
+                            // console.log(res.data);
+                            const newHospitalFavoriteCount = res.data['被收藏次數'] - 1;
+                            return axios.patch(`${apiUrl}/hospitals/${item.hospitalId}`, {
+                                '被收藏次數': newHospitalFavoriteCount
+                            })
+                        })
+                })
+                // 等待所有刪除請求和醫院更新請求完成
+                return Promise.all(updateRequests).then(updateResponse => {
+                    // console.log(updateResponse);
+                    init();// 更新頁面或 UI
+                })
+            });
+        })
+
+        .catch(err => {
+            console.log(err);
+        })
+})
