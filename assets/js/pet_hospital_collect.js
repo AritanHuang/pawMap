@@ -74,7 +74,6 @@ function init() {
 }
 init();
 //點擊取消收藏按鈕
-
 petCollectList.addEventListener('click', function (e) {
     const deleteCollectBtn = e.target.closest('.btn-delete-collect');
     if (!deleteCollectBtn) {
@@ -158,4 +157,10 @@ btnDeleteCollectall.addEventListener('click', function (e) {
         .catch(err => {
             console.log(err);
         })
+})
+//回到頁面最上方方法
+const toplink = document.querySelector('#top-link');
+toplink.addEventListener('click', function (e) {
+    e.preventDefault();
+    scrollToTop();
 })
