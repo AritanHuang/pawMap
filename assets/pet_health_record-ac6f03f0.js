@@ -1,4 +1,4 @@
-import{a as n,b as a,u as c,t as i,S as l,p as f}from"./axios-2d2df78c.js";let s=[];const u=document.querySelector("#todos-list"),r=document.querySelector("#newTodo"),m=document.querySelector("#btn-add-todo"),b=document.querySelector("#todo-title");function d(){n.get(`${a}/users/${c}/todos`).then(e=>{s=e.data,p()}).catch(e=>{console.log(e)})}d();function p(){let e="";s.forEach(function(t){e+=`<li class="d-flex mb-2 justify-content-between">
+import{a as n,b as a,u as c,t as i,S as l,p as f}from"./axios-2ea11919.js";let s=[];const u=document.querySelector("#todos-list"),r=document.querySelector("#newTodo"),m=document.querySelector("#btn-add-todo"),b=document.querySelector("#todo-title");function d(){n.get(`${a}/users/${c}/todos`).then(e=>{s=e.data,p()}).catch(e=>{console.log(e)})}d();function p(){let e="";s.forEach(function(t){e+=`<li class="d-flex mb-2 justify-content-between">
         <p class="d-flex align-items-center  me-4
         me-md-5 fs-md-5"><span class="material-symbols-outlined me-1">
                 pet_supplies

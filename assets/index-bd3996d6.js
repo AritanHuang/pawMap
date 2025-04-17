@@ -1,4 +1,4 @@
-import{a as t,b as o}from"./axios-2d2df78c.js";import{a as i}from"./utils-77fb7ba4.js";t.get(`${o}/hospitals?_sort=被收藏次數&_order=desc`).then(s=>s.data.slice(0,4)).then(s=>{n(s)}).catch(s=>{console.log(s)});function n(s){const a=document.querySelector("#top-hospitals-list");let e="";s.forEach(l=>{e+=`<li class="col-12 col-sm-6">
+import{a as t,b as o}from"./axios-2ea11919.js";import{a as i}from"./utils-dced5580.js";t.get(`${o}/hospitals?_sort=被收藏次數&_order=desc`).then(s=>s.data.slice(0,4)).then(s=>{n(s)}).catch(s=>{console.log(s)});function n(s){const a=document.querySelector("#top-hospitals-list");let e="";s.forEach(l=>{e+=`<li class="col-12 col-sm-6">
                   <div class="card rounded-5 card-shadow">
                     <div class="card-body p-3 p-lg-4">
                       <div class="d-flex justify-content-between align-items-center mb-12">
