@@ -13,8 +13,10 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>PawMap</title>
-  <script type="module" crossorigin src="/pawMap/assets/bootstrap.min-2015cc09.js"></script>
-  <link rel="stylesheet" href="/pawMap/assets/bootstrap-8b1eb18a.css">
+  <script type="module" crossorigin src="/pawMap/assets/index-b4d49051.js"></script>
+  <link rel="modulepreload" crossorigin href="/pawMap/assets/axios-2d2df78c.js">
+  <link rel="modulepreload" crossorigin href="/pawMap/assets/utils-77fb7ba4.js">
+  <link rel="stylesheet" href="/pawMap/assets/axios-8b1eb18a.css">
 </head>
   <body>
     <header class="bg-light fixed-top">
@@ -227,15 +229,15 @@
                 新北寵物醫院</h3>
               <p class="fs-lg-5 ls-lg-60 ls-48 text-light mb-4 mb-lg-20">建議出發前先與寵物醫院電話聯繫</p>
               <a class="btn btn-light  rounded-pill link-dark py-3 px-4 d-flex align-items-center justify-content-center fs-5  d-xl-inline-flex d-none"
-                href="hospital.html">查看更多
+                href="hospital.html">前往收藏
                 <span class="material-symbols-outlined ms-1">
                   arrow_forward
                 </span>
               </a>
             </div>
             <div class="col col-xl-8">
-              <ul class="list-unstyled mb-0 row g-4">
-                <li class="col-12 col-sm-6">
+              <ul class="list-unstyled mb-0 row g-4 " id="top-hospitals-list">
+                <!-- <li class="col-12 col-sm-6">
                   <div class="card rounded-5 card-shadow">
                     <div class="card-body p-3 p-lg-4">
                       <div class="d-flex justify-content-between align-items-center mb-12">
@@ -378,7 +380,7 @@
                       </a>
                     </div>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
             <!-- 桌機以下按鈕打開 -->
@@ -630,6 +632,8 @@
         <a class="dark30" href="https://data.coa.gov.tw/open_detail.aspx?id=078" target="_blank">data by 農業資料開放平台</a>
     </div>
 </footer>        
+        
+        
   </body>
 
 </html>
